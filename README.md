@@ -2,27 +2,37 @@
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-## Install global dependencies
-`gem install jekyll && npm install -g bower grunt-cli`
+1. Install global dependencies
+	```
+	gem install jekyll && npm install -g bower grunt-cli
+	```
 
-## Install project dependencies
-`npm install && bower install`
+2. Install project dependencies
+	```
+	npm install && bower install
+	```
 
-## Build front-end assets
-`grunt`
+3. Fire listeners
+	```
+	screen -S grunt -d -m grunt dev
+	screen -S jekyll -d -m jekyll serve --watch
+	```
 
-## Compile Jekyll site
-`jekyll build`
+4. Do work...
+	```
+	vi <filename>
+	git add <filenames>
+	git commit
+	git push origin master
+	```
 
-## Fire listeners
-`screen -S grunt -d -m grunt dev`
-`screen -S jekyll -d -m jekyll serve --watch`
+5. Kill listeners
+	```
+	screen -X -S grunt quit
+	screen -X -S jekyll quit
+	```
 
-## Do work...
-
-## Kill listeners
-`screen -X -S grunt quit`
-`screen -X -S jekyll quit`
-
-## Final build (optional)
-`grunt build`
+6. Final build (optional)
+	```
+	grunt build
+	```
