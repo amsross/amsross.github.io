@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<meta http-equiv='Content-Type' content='text/html; charset=utf-8' >
+		<meta name='viewport' content='width=device-width, initial-scale=0.75, maximum-scale=0.75' >
+		<meta name='description' content='{{ site.name }} - {{ site.description }}' >
+		<meta name='author' content='Matt Ross' >
+		<meta name='keywords' content='matt ross, web developer, web dev, html, css, node, php, wordpress' >
+		<title>{% if page.title %} {{ page.title }} | {% endif %} {{ site.name }}</title>
+		<link rel='stylesheet' href='{{site.baseurl}}/assets/css/main.min.css' type='text/css' >
+		<link rel='shortcut icon' href='favicon.ico' >
+	</head>
+	<body class='tk-museo-sans'>
+		{% include header.html %}
+		<div class='container'>
+			{{ content }}
+		</div>
+		{% include footer.html %}
+	</body>
+</html>

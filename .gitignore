@@ -1,0 +1,14 @@
+*.log
+*.swp
+*.tmp
+*_log
+*~
+.env
+.ftppass
+.sublime-*
+.tmp
+_site
+bower_components
+node_modules
+phpmyadmin
+Thumbs.db
