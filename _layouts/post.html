@@ -2,14 +2,26 @@
 layout: default
 ---
 
-<article>
-	<header>
-		<h2>{{ page.title }}</h2>
-		<span><i class="icon-clock"></i><time datetime="{{page.date|date:"%F"}}">{{page.date|date:"%b %d, %Y"}}</time></span><br/>
-		<span class="author">{% if page.author %}{{page.author}}{% else %}{{site.author}}{% endif%}</span>
-	</header>
-	<div class="entry">
-		{{ content }}
-	</div>
-	<footer><!-- additional info --></footer>
-</article>
+			<section class="status">
+				<article>
+					<header class="tagline">
+						<h2><a href="{{ site.baseurl }}{{ page.url }}" class="green">{{ page.title }}</a></h2>
+						<small><i class="fa fa-calendar"></i> <time datetime="{{ page.date|date:"%F" }}">{{ page.date|date:"%b %d, %Y" }}</time></small>
+					</header>
+					<div class="entry">
+						{{ content }}
+					</div>
+					<footer>
+						<span class="author">
+							{% if page.author %}
+							<a href="mailto:{{ page.author_email }}">
+							{% else %}
+							<a href="mailto:{{ site.author_email }}">
+							{% endif %}
+							<i class="fa fa-pencil"></i>
+							{% if page.author %}{{ page.author }}{% else %}{{ site.author }}{% endif %}
+							</a>
+						</span>
+					</footer>
+				</article>
+			</section>

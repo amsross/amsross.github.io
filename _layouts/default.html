@@ -1,20 +1,71 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 	<head>
-		<meta http-equiv='Content-Type' content='text/html; charset=utf-8' >
-		<meta name='viewport' content='width=device-width, initial-scale=0.75, maximum-scale=0.75' >
-		<meta name='description' content='{{ site.name }} - {{ site.description }}' >
-		<meta name='author' content='Matt Ross' >
-		<meta name='keywords' content='matt ross, web developer, web dev, html, css, node, php, wordpress' >
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+		<meta name="viewport" content="width=device-width, initial-scale=0.75, maximum-scale=0.75" >
+		<meta name="description" content="{{ site.name }} - {{ site.description }}" >
+		<meta name="author" content="Matt Ross" >
+		<meta name="keywords" content="matt ross, web developer, web dev, html, css, node, php, wordpress" >
 		<title>{% if page.title %} {{ page.title }} | {% endif %} {{ site.name }}</title>
-		<link rel='stylesheet' href='{{site.baseurl}}/assets/css/main.min.css' type='text/css' >
-		<link rel='shortcut icon' href='favicon.ico' >
+		<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.min.css" type="text/css" >
+		<link rel="shortcut icon" href="/favicon.ico" >
+		<script src="{{site.baseurl}}/assets/js/vendor.min.js"></script>
 	</head>
-	<body class='tk-museo-sans'>
+	<body class="tk-museo-sans">
 		{% include header.html %}
-		<div class='container'>
+		<div class="container">
+			<section class="contacts">
+				<ul class="list-unstyled">
+					<li class="contact">
+						<a href="/">
+							<span class="label"><i class="fa fa-home"></i></span>
+						</a>
+					</li>
+					<li class="contact">
+						<a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#111;&#58;&#x6d;&#x61;&#x74;&#x74;&#x40;&#x6d;&#97;&#116;&#116;&#114;&#x6f;&#115;&#x73;&#x2e;&#105;&#x6f;">
+							<span class="label"><i class="fa fa-envelope"></i></span>
+						</a>
+					</li>
+					<li class="contact">
+						<a href="&#x74;&#101;&#x6c;&#58;&#x38;&#53;&#x36;&#32;&#x32;&#x38;&#51;&#32;&#x33;&#x35;&#54;&#x35;">
+							<span class="label"><i class="fa fa-phone"></i></span>
+						</a>
+					</li>
+					<li class="contact">
+						<a href="https://www.google.com/+MattRossIsGreat">
+							<span class="label"><i class="fa fa-google-plus"></i></span>
+						</a>
+					</li>
+					<li class="contact">
+						<a href="https://www.linkedin.com/pub/matt-ross/21/a28/81b">
+							<span class="label"><i class="fa fa-linkedin"></i></span>
+						</a>
+					</li>
+					<li class="contact">
+						<a href="https://github.com/amsross/">
+							<span class="label"><i class="fa fa-github-alt"></i></span>
+						</a>
+					</li>
+					<li class="contact">
+						<a href="http://twitter.com/amsross">
+							<span class="label"><i class="fa fa-twitter"></i></span>
+						</a>
+					</li>
+					<li class="contact">
+						<a href="http://www.flickr.com/photos/amsross/">
+							<span class="label"><i class="fa fa-flickr"></i></span>
+						</a>
+					</li>
+					<li class="contact">
+						<a href="https://coderbits.com/amsross/">
+							<span class="label"><i class="fa fa-code"></i></span>
+						</a>
+					</li>
+				</ul>
+			</section>
 			{{ content }}
 		</div>
 		{% include footer.html %}
+		<script async src="{{site.baseurl}}/assets/js/scripts.min.js"></script>
 	</body>
 </html>

@@ -9,7 +9,7 @@ description: making web stuff
 destination: ./_site
 exclude: [package.json, Gruntfile.js, node_modules]
 name: mattross.io
-paginate: 3
+paginate: 5
 permalink: pretty
 source: .
 url: http://www.mattross.io/

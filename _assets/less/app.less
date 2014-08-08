@@ -1,4 +1,10 @@
+@import "../bower_components/bootstrap/less/variables.less";
+@import "../bower_components/bootstrap/less/mixins.less";
+@import "../bower_components/bootstrap/less/normalize.less";
+@import "../bower_components/bootstrap/less/type.less";
+@import "../bower_components/bootstrap/less/code.less";
 @import "../bower_components/font-awesome/less/font-awesome.less";
+@import "variables";
 @import "mixins";
 @import "keyframes";
 
@@ -9,27 +15,29 @@
 .text-center {text-align: center;}
 .text-right {text-align: right;}
 
-html, body, div, span, p, h1, h2, h3, h4, h5, h6, a, dl, dt, dd, ul,
-ol, li, form, fieldset, legend, label, input, textarea, select, button,
-blockquote, q, img, font, small, strong, strike, sup, sub, em, code,
-abbr, acronym, pre, table, caption, th, tr, td {
-	border:0 none;
-	font-family:inherit;
-	font-size:100%;
-	font-style:inherit;
-	font-weight:inherit;
-	margin:0;
-	outline:medium none;
-	padding:0;
-	vertical-align:baseline;
-}
+@color: #333;
+@green: #669933;
 
 a {
+	color: @color;
 	text-decoration: none;
+	&:visited {
+		color: lighten(@color, 15%);
+		&.green {
+			color: lighten(@green, 15%);
+		}
+	}
+	&:hover,
+	&:active {
+		color: lighten(@color, 25%);
+		&.green {
+			color: lighten(@green, 25%);
+		}
+	}
 }
 
 body {
-	color: #333333;
+	color: @color;
 	font: 100% Georgia,Times,serif;
 	height: 80%;
 	margin: 0;
@@ -46,9 +54,8 @@ body {
 }
 
 .container,
-section.status,
+section,
 section.status ul,
-section.contacts,
 section.contacts .contact {
 	.clearfix();
 	box-sizing: border-box;
@@ -75,7 +82,7 @@ section.contacts {
 				line-height: 1.75em;
 			}
 			.label {
-				color: #333;
+				color: @color;
 				display: block;
 				float: right;
 				font-size: 1.25em;
@@ -118,6 +125,17 @@ section.status {
 	}
 }
 
+article {
+	footer {
+		.clearfix();
+		border-top: 1px dotted @color;
+		font-size: 0.75em;
+		margin-right: 25%;
+		margin-top: 2.5em;
+		text-transform: lowercase;
+	}
+}
+
 @media (max-width: 767px) {
 	section.status {
 		.animate(0.5s, slide-right);
@@ -128,6 +146,14 @@ section.status {
 		.animate(0.5s, slide-left);
 		float: right;
 		font-size: 2em;
+	}
+	article {
+		footer {
+			margin-right: 0;
+			.author {
+				.pull-right();
+			}
+		}
 	}
 }
 @media (min-width: 768px) {}

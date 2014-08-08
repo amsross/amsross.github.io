@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 					'!*.swp',
 					'_assets/js/**'
 				],
-				tasks: ['jshint', 'uglify'],
+				tasks: ['jshint', 'uglify:scripts'],
 				options: {
 					livereload: true,
 				},
@@ -89,11 +89,22 @@ module.exports = function(grunt) {
 			}
 		},
 		uglify: {
-			dist: {
+			vendor: {
+				files: {
+					'assets/js/vendor.min.js': [
+						'_assets/bower_components/jquery/dist/jquery.js',
+						'_assets/bower_components/underscore/underscore.js'
+					]
+				},
+				options: {
+					sourceMap: true,
+					sourceMapIncludeSources: true,
+					sourceMapName: 'assets/js/vendor.min.js.map'
+				}
+			},
+			scripts: {
 				files: {
 					'assets/js/scripts.min.js': [
-						'_assets/bower_components/jquery/dist/jquery.js',
-						'_assets/bower_components/underscore/underscore.js',
 						'_assets/js/app.js'
 					]
 				},
@@ -165,7 +176,8 @@ module.exports = function(grunt) {
 		'less',
 		'createDefaultTemplate',
 		'jst',
-		'uglify',
+		'uglify:vendor',
+		'uglify:scripts',
 		'imagemin',
 		'copy:fonts'
 	]);

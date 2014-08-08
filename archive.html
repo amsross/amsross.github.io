@@ -1,0 +1,18 @@
+---
+layout: default
+title: archive
+---
+
+			<section class="status">
+				<div class="tagline articles">
+					<span class="green">My Articles</span>
+					<br>
+					<ul class="list-unstyled">
+						{% for post in site.posts %}
+							<li class="repo">
+								<time datetime="{{post.date|date:"%F"}}">{{post.date|date:"%b %d, %Y"}}</time> <a class="green" href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</section>
