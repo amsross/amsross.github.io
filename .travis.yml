@@ -1,16 +1,18 @@
 language: node_js
 node_js:
-- "0.10.25"
-before_install: gem install jekyll && npm install -g grunt-cli bower
+  - "0.10.25"
+before_install:
+  - gem install jekyll
+  - npm install -g grunt-cli bower
 install: npm install
 script: grunt build
 
 # branch whitelist
 branches:
   only:
-  - master     # test the gh-pages branch
-  - gh-pages     # test the gh-pages branch
+    - master     # test the gh-pages branch
+    - gh-pages     # test the gh-pages branch
 
 env:
   global:
-  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
