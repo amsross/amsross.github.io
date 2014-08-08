@@ -1,13 +1,15 @@
+# GitHub presets
 safe: true
 lsi: false
-source: .
-destination: ./_site
 
-name: mattross.io
-description: making web stuff
+# custom settings
 author: Matt Ross
 author_email: matt@mattross.io
-url: http://www.mattross.io/
-permalink: pretty
-paginate: 3
+description: making web stuff
+destination: ./_site
 exclude: [package.json, Gruntfile.js, node_modules]
+name: mattross.io
+paginate: 3
+permalink: pretty
+source: .
+url: http://www.mattross.io/
