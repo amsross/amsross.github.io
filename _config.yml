@@ -12,6 +12,7 @@ exclude:
   - Gruntfile.js
   - node_modules
   - vendor
+hightlighter: pygments
 name: mattross.io
 paginate: 5
 permalink: pretty
