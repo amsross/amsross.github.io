@@ -9,7 +9,7 @@
 
 2. Install project dependencies
 	```
-	npm install && bower install
+	npm install
 	```
 
 3. Fire listeners
