@@ -1,4 +1,4 @@
-#[mattross.io](http://www.mattross.io) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Build Status](https://travis-ci.org/amsross/io-mattross-www.png?branch=master)](https://travis-ci.org/amsross/io-mattross-www)
+#[mattross.io](http://www.mattross.io) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Build Status](https://travis-ci.org/amsross/amsross.github.io.png?branch=master)](https://travis-ci.org/amsross/amsross.github.io)
 
 1. Install global dependencies
 	```
