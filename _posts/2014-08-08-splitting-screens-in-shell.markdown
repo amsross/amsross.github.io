@@ -3,8 +3,11 @@ layout: post
 title: Splitting Screens in Shell
 ---
 
+### Start a fresh screen
+`screen -S split`
+
 ### Split the current screen vertically or horizontally
-`ctrl+|` or `ctrl+S`
+`ctrl+a+|` or `ctrl+a+S`
 
 ### Switch to a new screen
 `ctrl+a+<tab>`
