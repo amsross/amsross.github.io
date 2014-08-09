@@ -4,6 +4,7 @@
 @import "../bower_components/bootstrap/less/type.less";
 @import "../bower_components/bootstrap/less/code.less";
 @import "../bower_components/bootstrap/less/forms.less";
+@import "../bower_components/bootstrap/less/buttons.less";
 @import "../bower_components/font-awesome/less/font-awesome.less";
 @import "variables";
 @import "mixins";
@@ -40,6 +41,10 @@ a {
 			color: lighten(@green, 25%);
 		}
 	}
+}
+
+.btn-primary {
+	.button-variant(#fff, @green, @green + (#428bca - #357ebd));
 }
 
 body {
