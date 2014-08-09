@@ -13,11 +13,7 @@ layout: default
 					</div>
 					<footer>
 						<span class="author">
-							{% if page.author %}
-							<a href="mailto:{{ page.author_email }}">
-							{% else %}
-							<a href="mailto:{{ site.author_email }}">
-							{% endif %}
+							<a href="{{ site.baseurl }}/contact">
 							<i class="fa fa-pencil"></i>
 							{% if page.author %}{{ page.author }}{% else %}{{ site.author }}{% endif %}
 							</a>
