@@ -17,4 +17,5 @@ name: mattross.io
 paginate: 5
 permalink: pretty
 source: .
-url: http://www.mattross.io/
+timezone: America/New_York
+url: http://www.mattross.io

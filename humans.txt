@@ -1,0 +1,13 @@
+/* TEAM */
+	Developer: Matt Ross
+	Contact: matt [at] mattross [dot] io
+	Twitter: @amsross
+	From: Haddonfield, Barcelona, New Jersey, USA
+
+
+/* SITE */
+	Language: English
+	Doctype: HTML5
+	Standards: HTML5, CSS3
+	Components: jQuery, underscore, backbone
+	Software: Sublime Text, Jekyll, Grunt, Node

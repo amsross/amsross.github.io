@@ -5,7 +5,7 @@ layout: default
 			<section class="status">
 				<article>
 					<header class="tagline">
-						<h2><a href="{{ site.baseurl }}{{ page.url }}" class="green">{{ page.title }}</a></h2>
+						<h2><a href="{{ site.url }}/{{ page.url }}/" class="green">{{ page.title }}</a></h2>
 						<small><i class="fa fa-calendar"></i> <time datetime="{{ page.date|date:"%F" }}">{{ page.date|date:"%b %d, %Y" }}</time></small>
 					</header>
 					<div class="entry">
@@ -13,7 +13,7 @@ layout: default
 					</div>
 					<footer>
 						<span class="author">
-							<a href="{{ site.baseurl }}/contact">
+							<a href="{{ site.url }}/contact">
 							<i class="fa fa-pencil"></i>
 							{% if page.author %}{{ page.author }}{% else %}{{ site.author }}{% endif %}
 							</a>
