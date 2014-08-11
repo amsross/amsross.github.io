@@ -23,13 +23,13 @@ layout: default
 					<ul class="list-unstyled">
 						{% for post in paginator.posts %}
 							<li class="repo">
-								<time datetime="{{ post.date|date:"%F" }}">{{ post.date|date:"%b %d, %Y" }}</time> <a class="green" href="{{ site.url }}/{{ post.url }}/">{{ post.title }}</a>
+								<time datetime="{{ post.date|date:"%F" }}">{{ post.date|date:"%b %d, %Y" }}</time> <a class="green" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
 							</li>
 						{% endfor %}
 						{% if paginator.total_posts > paginator.per_page %}
 							<li class="repo">
 								<br>
-								<a class="green" href="{{ site.url }}/archive">more</a>
+								<a class="green" href="{{ site.baseurl }}/archive">more</a>
 							</li>
 						{% endif %}
 					</ul>

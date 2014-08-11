@@ -7,10 +7,10 @@
 		<meta name="author" content="Matt Ross" >
 		<meta name="keywords" content="matt ross, web developer, web dev, html, css, node, php, wordpress" >
 		<title>{% if page.title %} {{ page.title }} | {% endif %} {{ site.name }}</title>
-		<link rel="stylesheet" href="{{ site.url }}/assets/css/main.min.css" type="text/css" >
+		<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.min.css" type="text/css" >
 		<link rel="shortcut icon" href="/favicon.ico" >
-		<link type="text/plain" rel="author" href="{{ site.url }}/humans.txt" />
-		<script src="{{ site.url }}/assets/js/vendor.min.js"></script>
+		<link type="text/plain" rel="author" href="{{ site.baseurl }}/humans.txt" />
+		<script src="{{ site.baseurl }}/assets/js/vendor.min.js"></script>
 	</head>
 	<body class="tk-museo-sans">
 		{% include header.html %}
@@ -18,12 +18,12 @@
 			<section class="contacts">
 				<ul class="list-unstyled">
 					<li class="contact">
-						<a href="{{ site.url }}/">
+						<a href="{{ site.baseurl }}/">
 							<span class="label"><i class="fa fa-home"></i></span>
 						</a>
 					</li>
 					<li class="contact">
-						<a href="{{ site.url }}/contact">
+						<a href="{{ site.baseurl }}/contact">
 							<span class="label"><i class="fa fa-envelope"></i></span>
 						</a>
 					</li>
@@ -74,6 +74,6 @@
 			{{ content }}
 		</div>
 		{% include footer.html %}
-		<script async src="{{ site.url }}/assets/js/scripts.min.js"></script>
+		<script async src="{{ site.baseurl }}/assets/js/scripts.min.js"></script>
 	</body>
 </html>
