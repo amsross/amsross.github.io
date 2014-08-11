@@ -4,15 +4,16 @@ title: archive
 ---
 
 			<section class="status">
-				<div class="tagline articles">
-					<span class="green">My Posts</span>
-					<br>
-					<ul class="list-unstyled">
-						{% for post in site.posts %}
-							<li class="repo">
-								<time datetime="{{ post.date|date:"%F" }}">{{ post.date|date:"%b %d, %Y"}}</time> <a class="green" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-							</li>
-						{% endfor %}
-					</ul>
-				</div>
+				<header class="tagline">
+					<h2><a class="green">My Posts</a></h2>
+				</header>
+				<article>
+				{% for post in site.posts %}
+					<article class="repo">
+						<div class="entry">
+							<time datetime="{{ post.date|date:"%F" }}">{{ post.date|date:"%b %d, %Y"}}</time> <a class="green" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+						</div>
+					</article>
+				</article>
+				{% endfor %}
 			</section>
