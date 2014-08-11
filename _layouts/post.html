@@ -20,24 +20,24 @@ layout: default
 						</span>
 					</footer>
 				</article>
+				{% if page.next or page.previous %}
+					<div class="paginate">
+						{% if page.next %}
+							<span class="next">
+								<a href="{{ page.next.url }}" title="{{ page.next.title }}" alt="{{ page.next.title }}">
+									<i class="green fa fa-arrow-circle-left"></i>
+									<span class="paginate-title">{{ page.next.title }}</span>
+								</a>
+							</span>
+						{% endif %}
+						{% if page.previous %}
+							<span class="previous">
+								<a href="{{ page.previous.url }}" title="{{ page.previous.title }}" alt="{{ page.previous.title }}">
+									<span class="paginate-title">{{ page.previous.title }}</span>
+									<i class="green fa fa-arrow-circle-right"></i>
+								</a>
+							</span>
+						{% endif %}
+					</div>
+				{% endif %}
 			</section>
-			{% if page.next or page.previous %}
-				<div class="paginate">
-					{% if page.next %}
-						<span class="next">
-							<a href="{{ page.next.url }}" title="{{ page.next.title }}" alt="{{ page.next.title }}">
-								<i class="green fa fa-arrow-circle-left"></i>
-								<!-- <span class="paginate-title">{{ page.next.title }}</span> -->
-							</a>
-						</span>
-					{% endif %}
-					{% if page.previous %}
-						<span class="previous">
-							<a href="{{ page.previous.url }}" title="{{ page.previous.title }}" alt="{{ page.previous.title }}">
-								<!-- <span class="paginate-title">{{ page.previous.title }}</span> -->
-								<i class="green fa fa-arrow-circle-right"></i>
-							</a>
-						</span>
-					{% endif %}
-				</div>
-			{% endif %}

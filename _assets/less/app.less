@@ -152,6 +152,24 @@ article {
 	}
 }
 
+.paginate {
+	font-size: 1em;
+	.next,
+	.previous {
+		margin: 5px 0;
+	}
+	.next {
+		clear: left;
+		float: left;
+		text-align: left;
+	}
+	.previous {
+		clear: right;
+		float: right;
+		text-align: right;
+	}
+}
+
 @media (max-width: 767px) {
 	section.status {
 		.animate(0.5s, slide-right);
@@ -183,6 +201,13 @@ article {
 		position: absolute;
 		right: 10px;
 		top: 10px;
+		.next,
+		.previous {
+			clear: none;
+			float: none;
+			margin: 0;
+			text-align: center;
+		}
 		a {
 			.paginate-title {
 				display: none;
