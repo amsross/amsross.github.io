@@ -136,8 +136,15 @@ section.status {
 	}
 }
 
-article {
+article,
+.page {
 	margin-right: 25%;
+	article {
+		margin-right: 0;
+	}
+}
+
+article {
 	footer {
 		.clearfix();
 		border-top: 1px dotted @color;
@@ -181,8 +188,11 @@ article {
 		float: right;
 		font-size: 2em;
 	}
-	article {
+	article,
+	.page {
 		margin-right: 0;
+	}
+	article {
 		footer {
 			margin-right: 0;
 			.author {

@@ -7,13 +7,13 @@ title: archive
 				<header class="tagline">
 					<h2><a class="green">My Posts</a></h2>
 				</header>
-				<article>
+				<div class="page articles">
 				{% for post in site.posts %}
 					<article class="repo">
 						<div class="entry">
 							<time datetime="{{ post.date|date:"%F" }}">{{ post.date|date:"%b %d, %Y"}}</time> <a class="green" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
 						</div>
 					</article>
-				</article>
 				{% endfor %}
+				</div>
 			</section>
