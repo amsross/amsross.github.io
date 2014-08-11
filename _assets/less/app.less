@@ -177,4 +177,26 @@ article {
 	section.status {
 		padding-right: 5em;
 	}
+	.paginate {
+		font-size: 4em;
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		a {
+			.paginate-title {
+				display: none;
+			}
+			.fa {
+				.opacity(0.5);
+				.transition(all 0.5s);
+			}
+			&:active,
+			&:hover {
+				.fa {
+					.opacity(0.75);
+					.scale(1.2);
+				}
+			}
+		}
+	}
 }
