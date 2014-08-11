@@ -1,5 +1,6 @@
 ---
 layout: default
+custom_js: "'use strict'; $.get('https://api.github.com/users/amsross/repos') .done(function(repos) {_.each(repos, function(repo) {$('.repos ul').append(JST['_assets/templates/repo.ejs'](repo)); }); });"
 ---
 
 			<section class="status">
@@ -35,14 +36,3 @@ layout: default
 					</ul>
 				</div>
 			</section>
-			<script type="text/javascript">
-				$(document).ready(function() {
-					'use strict';
-					$.get('https://api.github.com/users/amsross/repos')
-						.done(function(repos) {
-							_.each(repos, function(repo) {
-								$('.repos ul').append(JST['_assets/templates/repo.ejs'](repo));
-							});
-						});
-				});
-			</script>
