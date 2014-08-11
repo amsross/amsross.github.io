@@ -24,7 +24,7 @@ ignore=Path */wp-content/wp-uploads
 ignore=Path */wp-includes
 {% endhighlight %}
 
-You could also speciy a directory to explicitly sync, such as .git, which is ignored by default:
+You could also speciy a directory to explicitly sync, such as `.git`, which is ignored by default:
 {% highlight apacheconf linenos %}
 # Unison preferences file
 ignorenot=Path */.git
