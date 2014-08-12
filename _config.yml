@@ -13,11 +13,11 @@ exclude:
   - node_modules
   - vendor
 hightlighter: pygments
+keys:
+  ga: UA-19230806-1
 name: mattross.io
 paginate: 5
 permalink: pretty
 source: .
 timezone: America/New_York
 url: http://www.mattross.io/
-keys:
-  ga: UA-19230806-1
