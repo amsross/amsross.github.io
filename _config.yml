@@ -20,6 +20,6 @@ paginate: 5
 permalink: pretty
 source: .
 timezone: America/New_York
-url: http://www.mattross.io/
+url: http://www.mattross.io
 gems:
   - jekyll-sitemap
