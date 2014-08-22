@@ -7,7 +7,7 @@
 
 2. Install project dependencies
 	```
-	npm install
+	npm install # bower assets will be installed automatically
 	```
 
 3. Fire listeners
