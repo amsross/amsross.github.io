@@ -15,7 +15,7 @@ title: Splitting Screens in Shell
 ### Spawn a new terminal in that screen
 `ctrl+a+c`
 
-### Save this layout so when you can safely detach
+### Save this layout so you can safely detach and reattach later
 `ctrl+:layout save default`
 
 ### Close a new terminal and screen
