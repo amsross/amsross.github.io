@@ -13,7 +13,7 @@
 3. Fire listeners
 	```
 	screen -S grunt -d -m grunt dev
-	screen -S jekyll -d -m jekyll serve --watch
+	screen -S jekyll -d -m jekyll serve --watch --drafts
 	```
 
 4. Do work...
