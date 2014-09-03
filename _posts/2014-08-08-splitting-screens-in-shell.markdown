@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Splitting Screens in Shell
+description: Splitting Screens in Shell
 ---
 
 ### Start a fresh screen

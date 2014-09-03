@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Programmatic Selectable Recipients With Pipes in WPCF7
+description: Programmatic Selectable Recipients With Pipes in WPCF7
 ---
 
 ## WPCF7

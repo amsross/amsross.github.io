@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Persisitent Group Permissions for Web Folder
+description: Persisitent Group Permissions for Web Folder
 ---
 
 You've got a VPS or some other managed (re: non-shared/reseller) server where httpd runs under the user `apache`. Apache, however, isn't an active user, so you can't upload your files in that name, resulting in an eventual "403: Forbidden" error on the front end.

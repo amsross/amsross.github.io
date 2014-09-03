@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Automatic Deployments With Git and Bitbucket
+description: Automatic Deployments With Git and Bitbucket
 ---
 
 ## Deploy Endpoint in Repo

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Nitrous.io: Ignoring Files When Syncing"
+description: "Nitrous.io: Ignoring Files When Syncing"
 ---
 
 I've been using [Nitrous.io](https://www.nitrous.io/join/ks1xdFYYhts?utm_source=nitrous.io&utm_medium=copypaste&utm_campaign=referral) as a remote development environment for a few months now. I love the syncing, the management via SSH, the scalability, etc. I do most of my work on there.

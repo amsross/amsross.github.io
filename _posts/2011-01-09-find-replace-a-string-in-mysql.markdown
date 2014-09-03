@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Find & Replace a String in MySQL
+description: Find & Replace a String in MySQL
 ---
 
 {% highlight mysql linenos %}
