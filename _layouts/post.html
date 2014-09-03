@@ -3,19 +3,25 @@ layout: default
 ---
 
 			<section class="status">
-				<article>
+				<article itemscope="" itemtype="http://schema.org/BlogPosting">
 					<header class="tagline">
-						<h2><a href="{{ site.baseurl }}{{ page.url }}" class="green">{{ page.title }}</a></h2>
-						<small><i class="fa fa-calendar"></i> <time datetime="{{ page.date|date:"%F" }}">{{ page.date|date:"%b %d, %Y" }}</time></small>
+						<h2 itemprop="name headline"><a href="{{ site.baseurl }}{{ page.url }}" class="green">{{ page.title }}</a></h2>
+						<small><i class="fa fa-calendar"></i> <time datetime="{{ page.date|date:"%F" }}" itemprop="datePublished">{{ page.date|date:"%b %d, %Y" }}</time></small>
 					</header>
-					<div class="entry">
+					<div class="entry" itemprop="articleBody">
 						{{ content }}
 					</div>
 					<footer>
-						<span class="author">
+						<span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
 							<a href="{{ site.baseurl }}/contact">
 								<i class="fa fa-pencil"></i>
-								{% if page.author %}{{ page.author }}{% else %}{{ site.author }}{% endif %}
+								<span itemprop="name">
+									{% if page.author %}
+										{{ page.author.name }}
+									{% else %}
+										{{ site.author }}
+									{% endif %}
+								</span>
 							</a>
 						</span>
 					</footer>

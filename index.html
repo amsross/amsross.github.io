@@ -23,8 +23,8 @@ custom_js: "'use strict'; $.get('https://api.github.com/users/amsross/repos') .d
 					<br>
 					<ul class="list-unstyled">
 						{% for post in paginator.posts %}
-							<li class="repo">
-								<time datetime="{{ post.date|date:"%F" }}">{{ post.date|date:"%b %d, %Y" }}</time> <a class="green" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+							<li class="repo" itemscope="" itemtype="http://schema.org/BlogPosting">
+								<time datetime="{{ post.date|date:"%F" }}" itemprop="datePublished">{{ post.date|date:"%b %d, %Y"}}</time> <a class="green" href="{{ site.baseurl }}{{ post.url }}" itemprop="name headline">{{ post.title }}</a>
 							</li>
 						{% endfor %}
 						{% if paginator.total_posts > paginator.per_page %}
