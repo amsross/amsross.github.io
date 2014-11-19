@@ -19,6 +19,7 @@ module.exports = function(grunt) {
 			},
 			img: {
 				files: [
+					'!*.swp',
 					'_assets/img/**'
 				],
 				tasks: ['imagemin'],
@@ -36,7 +37,10 @@ module.exports = function(grunt) {
 					'!*.swp',
 					'_assets/templates/**/*.ejs'
 				],
-				tasks: ['jst']
+				tasks: [
+					'jst',
+					'createDefaultTemplate',
+				]
 			},
 			less: {
 				files: [
@@ -174,8 +178,8 @@ module.exports = function(grunt) {
 	//Default task(s).
 	grunt.registerTask('default', [
 		'less',
-		'createDefaultTemplate',
 		'jst',
+		'createDefaultTemplate',
 		'uglify:vendor',
 		'uglify:scripts',
 		'imagemin',
