@@ -10,12 +10,14 @@ description: contact
 				</header>
 				<div class="page">
 					<p>Send me a message and I'll get back to you.</p>
-					<form class="form" method="POST" action="http://forms.brace.io/{{ site.author_email }}">
+					<form class="form" method="POST" action="//formspree.io/{{ site.author_email }}">
+						<input type="hidden" name="_subject" value="mattross.io contact form" />
+						<input type="text" name="_gotcha" style="display:none" />
 						<fieldset class="form-group">
-							<input class="form-control" name="name" placeholder="Enter Name" />
+							<input class="form-control" type="text" name="name" placeholder="Enter Name" />
 						</fieldset>
 						<fieldset class="form-group">
-							<input class="form-control" name="_replyto" placeholder="Enter Email" />
+							<input class="form-control" type="text" name="_replyto" placeholder="Enter Email" />
 						</fieldset>
 						<fieldset class="form-group">
 							<textarea class="form-control" name="message" placeholder="Enter Message" rows="3"></textarea>
