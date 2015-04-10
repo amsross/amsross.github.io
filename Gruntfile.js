@@ -84,7 +84,7 @@ module.exports = function(grunt) {
 				},
 				options: {
 					compress: true,
-					outputSourceFiles: true,
+					outputSourceFiles: false,
 					sourceMap: true,
 					sourceMapBasepath: '../../',
 					sourceMapFilename: 'assets/css/main.min.css.map',
@@ -102,7 +102,7 @@ module.exports = function(grunt) {
 				},
 				options: {
 					sourceMap: true,
-					sourceMapIncludeSources: true,
+					sourceMapIncludeSources: false,
 					sourceMapName: 'assets/js/vendor.min.js.map'
 				}
 			},
@@ -114,7 +114,7 @@ module.exports = function(grunt) {
 				},
 				options: {
 					sourceMap: true,
-					sourceMapIncludeSources: true,
+					sourceMapIncludeSources: false,
 					sourceMapName: 'assets/js/scripts.min.js.map'
 				}
 			}
