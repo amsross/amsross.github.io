@@ -51,9 +51,9 @@ So, how do we read the notation used in `fantasy-birds`? I found a pretty handy 
 
 As an example, we can take a function like `function(a) { return a + 1; }` and turn it into `a -> b` where `b` represents the return value, `a + 1`.  It looks like an ES6 arrow function, doesn't it?
 
-So working backwards from that, we can read `(a -> b) -> a -> b` as `function(f) { return function(b) { return f(a); }; }` where `f` is the function we pass as the first argument, `a` is the argument we pass to call `f` with, and `b` is the return value of `f(a)`.
+So working backwards from that, we can read `(a -> b) -> a -> b` as `function(f) { return function(a) { return f(a); }; }` where `f` is the function we pass as the first argument (`a -> b`), `a` is the argument we pass to call `f` with, and `b` is the return value of `f(a)`.
 
-From the execution side, we can read this as "To get `b`, pass `a` to a function that that takes `a` and passes it to `f` which takes `a` and returns `b`."
+From the execution side, we can read this as "To get `b`, pass `f` to a function which returns another function, which then takes `a` and passes it to `f` which returns `b`."
 
 From the declaration side, we can read this as "Return a function which takes `f` and returns a function which takes `a`, then call `f` with `a` as the argument, returning `b`"
 
