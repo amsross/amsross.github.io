@@ -3,6 +3,7 @@ layout: post
 title: 'Fantasy Birds: Introduction'
 description: 'Fantasy Birds: Introduction'
 tags: 
+  - javascript
   - combinators
   - functional
   - haskell
@@ -83,6 +84,45 @@ From here I have two handy functions; one that gives me all of the player ids, a
 
 ## Fantasy Birds
 
-Alright, so what about `fantasyland/fantasy-birds`? My actual intent here is to cover some of the real world use cases for applicators. Because fantasy-birds is so whimsical and is a list of combinators that increase in complexity, it seems like the perfect fodder for diving in and figuring out just what use a real programmer could have for a combinator beyond theoretical mathematical applications.
+Alright, so what about `fantasyland/fantasy-birds`? My actual intent here is to cover some of the real world use cases for applicators. Because fantasy-birds is so whimsical and is a list of combinators that increase in complexity, it seems like perfect fodder for diving in and figuring out just what use a real programmer could have for a combinator beyond theoretical mathematical applications.
 
-Immediately following this introduction, I'll start at the top of the list and begin working my way down. So up next: **applicator**.
+So I'll start at the top of the list and begin working my way down:
+
+## Applicator
+
+Ok, let's start with an easy one; [applicator](https://github.com/fantasyland/fantasy-birds#applicator--a---b---a---b) (aka A combinator, or apply), which is written as `(a -> b) -> a -> b` and breaks down to `f => a => f(a)`
+
+This is possibly the simplest example of a combinator I can think of beyond an `identity` or `idiot` combinator (`a -> a`). This is also one that I use (in theory) pretty frequently. In my useages, the applicator combinator is perfect for the partial application of a function with a single argument, such as pulling a specific property value from each member in a list:
+
+```
+const list = [{
+  num: "one",
+  title: "cookoo"
+}, {
+  num: "two",
+  title: "lark"
+}];
+const applicator = f => a => f(a);
+const mapper = applicator(a => a.title);
+
+list.map(mapper); // [ 'cookoo', 'lark' ]
+```
+
+Breakdown: `list` is an array of objects, each of which has a `title` property. If we want to get the values of all of the `title` properties in `list`, we:
+
+1. define `applicator` per the `fantasy-birds` spec
+2. define `mapper` by calling `applicator` with our lambda (`a => a.title`) which returns only the `title` property of whatever is passed to it
+3. map over our `list`, calling `mapper` with each member in the list
+
+What this would look like over time in long form would be something like:
+
+```
+applicator(a => a.title)({num:"one", title: "cookoo"}); // cookoo
+applicator(a => a.title)({num:"two", title: "lark"}); // lark
+```
+
+So this is very much an example of value "in theory." Wouldn't it have just made more sense to call `list.map(a => a.title)`? I think so.
+
+So what applications does the applicator really have? In short, I don't know. Your opinion is welcome, though: [@amsross](https://twitter.com/amsross).
+
+Next up: **becard**
