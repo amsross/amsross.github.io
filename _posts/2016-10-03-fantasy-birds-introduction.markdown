@@ -90,7 +90,12 @@ So I'll start at the top of the list and begin working my way down:
 
 ## Applicator
 
-Ok, let's start with an easy one; [applicator](https://github.com/fantasyland/fantasy-birds#applicator--a---b---a---b) (aka A combinator, or apply), which is written as `(a -> b) -> a -> b` and breaks down to `f => a => f(a)`
+Ok, let's start with an easy one; [applicator](https://github.com/fantasyland/fantasy-birds#applicator--a---b---a---b) (aka A combinator, or apply), which is written as
+
+```
+(a -> b) -> a -> b
+// f => a => f(a)
+```
 
 This is possibly the simplest example of a combinator I can think of beyond an `identity` or `idiot` combinator (`a -> a`). This is also one that I use (in theory) pretty frequently. In my usages, the applicator combinator is perfect for the partial application of a function with a single argument, such as pulling a specific property value from each member in a list:
 
