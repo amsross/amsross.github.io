@@ -67,7 +67,7 @@ OK, so what is a combinator?
 [Wikipedia FTW:](https://en.wikipedia.org/wiki/Combinatory_logic)
 > A combinator is a higher-order function that uses only function application and earlier defined combinators to define a result from its arguments.
 
-In Javascript (or any other language, I suppose), a combinator is a function that takes some other functions and combines their functionality. A simple example is [Underscore's `_.compose` method](underscorejs.org/#compose), which takes one or more functions as arguments and returns a function which accepts a value and passes it to the first function on the right, whose return value is passed to the next function to the left, etc, until all argument functions have been called. The return value is then the result of all of the passed functions **combined**:
+In Javascript (or any other language, I suppose), a combinator is a function that takes some other functions and combines their functionality. A simple example is [Underscore's `_.compose` method](http://underscorejs.org/#compose), which takes one or more functions as arguments and returns a function which accepts a value and passes it to the first function on the right, whose return value is passed to the next function to the left, etc, until all argument functions have been called. The return value is then the result of all of the passed functions **combined**:
 
 ```
 _.compose(three, two, one)(1) === three(two(one(1)))
