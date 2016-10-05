@@ -70,7 +70,7 @@ function(a) { return a + 1; }
 
 It looks like an ES6 arrow function, doesn't it?
 
-How about a combinator that takes a function argument?
+How about an example that accepts a function as an argument?
 
 ```
 function(f) { return function(a) { return f(a); }; }
@@ -87,7 +87,7 @@ function(f) { return function(a) { return f(a); }; }
       (a -> b)  ->            a  ->         b
 ```
 
-Now here we need to consider what `f` is in order to signify it with an appropriate expression. In this case, it's a function which accepts `a` and returns `b`, as seen in its call: `f(a)`, so we express it just like it was an arrow function: `a => a + 1` or `a -> b`.
+In step 8, we need to consider what `f` is in order to signify it with an appropriate expression. In this case, it's a function which accepts `a` and returns `b`, as seen in its call: `f(a)`, so we express it just like it was an arrow function: `a => a + 1` or `a -> b`.
 
 So let's work backwards from that:
 
@@ -130,13 +130,11 @@ const allPlayerIds = h.flip(_.pluck)("playerId");
 const uniqPlayerIds = _.compose(_.uniq, allPlayerIds);
 ```
 
-From here I have two handy functions; one that gives me all of the player ids, and one that gives me all of the unique player ids. Both are still accessible, and there is no duplicationg between them. They're bite-sized, they're descriptive, they're testable, and they're reusable.
+From here I have two handy functions; one that gives me all of the player ids, and one that gives me all of the unique player ids. Both are still accessible, and there is no duplication between them. They're bite-sized, they're descriptive, they're testable, and they're reusable.
 
 ## Fantasy Birds
 
-Alright, so what about `fantasyland/fantasy-birds`? My actual intent here is to cover some of the real world use cases for applicators. Because fantasy-birds is so whimsical and is a list of combinators that increase in complexity, it seems like perfect fodder for diving in and figuring out just what use a real programmer could have for a combinator beyond theoretical mathematical  or logical applications.
-
-So I'll start at the top of the list and begin working my way down:
+Alright, so what about `fantasyland/fantasy-birds`? My actual intent here is to cover some of the real world use cases for the combinators in the ornithology over the span of several (or many) separate posts. Because fantasy-birds is so whimsical and is a list of combinators that increase in complexity, it seems like perfect fodder for diving in and figuring out just what use a real programmer could have for a combinator beyond theoretical mathematical  or logical applications.
 
 ## Applicator
 
@@ -176,7 +174,7 @@ applicator(a => a.title)({num:"one", title: "cookoo"}); // cookoo
 applicator(a => a.title)({num:"two", title: "lark"}); // lark
 ```
 
-So this is very much an example of value "in theory." Wouldn't it have just made more sense to call `list.map(a => a.title)`? I think so.
+This is very much an example of value "in theory." Wouldn't it have just made more sense to call `list.map(a => a.title)`? I think so. The root of combinators is combinatory logic, and in that system the use of small pieces to make up a more complete whole may lend itself to restricted purpose concepts like the applicator.
 
 So what applications does the applicator really have? In short, I don't know. Your opinion is welcome, though: [@amsross](https://twitter.com/amsross).
 
