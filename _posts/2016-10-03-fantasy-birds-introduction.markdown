@@ -10,19 +10,15 @@ tags:
   - lambda
 ---
 
-## Functional Javascript
-
-Like just about everyone else who is writing javascript day to day right now, I'm pretty bullish on functional programming. I'll leave discovering the details of this (conflicting as they may be) as an exercise to the reader. Suffice it to say that I think Javascript lends itself to this approach particularly well and just adding a heaping dose of discipline and bravery on the part of the developer can result in both productivity and joy.
-
 ## Fantasy Land
 
-I was recently poking around some of my favorite javascript libraries looking for a place I could put in a little work to reach my 4 PR goal for [hacktoberfest 2016](https://hacktoberfest.digitalocean.com/) when I found [a fairly old issue](https://github.com/caolan/highland/pull/114) on my favorite [FRP](https://en.wikipedia.org/wiki/Functional_reactive_programming) library, [highlandjs](http://highlandjs.org/). The issue pointed to a specification "for algebraic Javascript structures" called [Fantasy Land](https://github.com/fantasyland/fantasy-land). This piqued my interest on so many levels. In short, Fantasy Land is a set of "algebras" or specifications stating concepts that must exist, methods that must exist to support them, and the explicit behavior of those things.
+I was recently poking around some of my favorite javascript libraries looking for a place I could put in a little work to reach my 4 PR goal for [hacktoberfest 2016](https://hacktoberfest.digitalocean.com/) when I found [a fairly old issue](https://github.com/caolan/highland/pull/114) on my favorite [FRP](https://en.wikipedia.org/wiki/Functional_reactive_programming) library, [highlandjs](http://highlandjs.org/). The issue pointed to a specification "for algebraic Javascript structures" called [Fantasy Land](https://github.com/fantasyland/fantasy-land). This piqued my interest on so many levels. In short, Fantasy Land is a specification of concepts that naturally expose themselves in programming. It seems like the goal of this organization is to take these abstact constructs (monads, functors, etc), and make standard structure, bahavior, and naming conventions to allow for interoperability between systems and libraries.
 
 I poked around the [`fantasyland/fantasy-land`](https://github.com/fantasyland/fantasy-land) repository for a while and found loads of specifications of particular use in functional programming, but I was really taken with another repository in the same group, [`fantasyland/fantasy-birds`](https://github.com/fantasyland/fantasy-birds). In this repository is a port of the Haskell package [`Data.Aviary.Birds`](https://hackage.haskell.org/package/data-aviary-0.4.0/docs/Data-Aviary-Birds.html), "every thing for your combinatory needs." It should be noted, of course, that the Hackage page for `Data.Aviary.Birds` explicitly states that "this module is intended for illustration (the type signatures!) rather than utility." Because let's face it, introducing a library full of bird names into your production environment isn't going to win you any friends in the office.
 
-## Reading Lamda Expressions (&lambda;)
+## Lamda Expressions (&lambda;)
 
-At first glance, the "[Ornithology](https://github.com/fantasyland/fantasy-birds#ornithology)" (aka, the docs) looked pretty cryptic to me. I'll admit that until now, I've been only vaguely aware of the fact that a "lambda" is a thing, with no deeper knowledge than that. Maybe touching on what a lambda _actually is_ would help.
+At first glance, the "[Ornithology](https://github.com/fantasyland/fantasy-birds#ornithology)" (aka, the docs) looked pretty cryptic to me. That's because they're lambda expressions. I'll admit that until now, I've been only vaguely aware of the fact that a "lambda" is a thing, with no deeper knowledge than that. Maybe touching on what a lambda _actually is_ would help.
 
 [Martin Fowler says](http://martinfowler.com/bliki/Lambda.html): 
 
@@ -39,24 +35,78 @@ Since functions are "first-class citizens" in Javascript, lambdas are something 
   // => [1, 2, 3]
 ```
 
-In this instance, `x => x.length` is a lambda because it is the "data" the map function is consuming.
+In this instance, `x => x.length` is a lambda. It is the "data" the map function is consuming.
 
 Apparantly, lambdas are also usually closures, defined in place, and defined using a shorthand notation. For applicability in my own personal use cases for this type of construct, I'm going to largely ignore these last points. [Tweet me](https://twitter.com/@amsross) death threats if you want.
 
-So, how do we read the notation used in `fantasy-birds`? I found a pretty handy set of examples [here](http://www.tutorialsteacher.com/linq/linq-lambda-expression). The gist is, we take a function and
+## Reading Lamda Expressions
+
+So, how do we read the notation used in `fantasy-birds`? I found a pretty handy set of examples for reading lambda expressions [here](http://www.tutorialsteacher.com/linq/linq-lambda-expression). Let's start out by working backwards from a function declaration we're familiar with and turn it into a lambda expression like we see in the ornithology. The gist is, we take a function and
 
 1. drop any `function`s
 2. drop any `return`s
-3. drop any curly braces
-3. drop any unnecessary parantheses
+3. drop any semicolons
+4. add an arrow between the signature and the block
+5. drop any curly braces
+6. drop any unnecessary parantheses
+7. signify any return values with a variable name
+8. signify any passed functions with an expression
 
-As an example, we can take a function like `function(a) { return a + 1; }` and turn it into `a -> b` where `b` represents the return value, `a + 1`.  It looks like an ES6 arrow function, doesn't it?
+As an example, we can rewrite a function like this:
 
-So working backwards from that, we can read `(a -> b) -> a -> b` as `function(f) { return function(a) { return f(a); }; }` where `f` is the function we pass as the first argument (`a -> b`), `a` is the argument we pass to call `f` with, and `b` is the return value of `f(a)`.
+```
+function(a) { return a + 1; }
 
-From the execution side, we can read this as "To get `b`, pass `f` to a function which returns another function, which then takes `a` and passes it to `f` which returns `b`."
+        (a) { return a + 1; } // step 1
+        (a) {        a + 1; } // step 2
+        (a) {        a + 1  } // step 3
+        (a) => {     a + 1  } // step 4
+        (a) =>       a + 1    // step 5
+         a  =>       a + 1    // step 6
+         a  =>       b        // step 7
 
-From the declaration side, we can read this as "Return a function which takes `f` and returns a function which takes `a`, then call `f` with `a` as the argument, returning `b`"
+         a  ->       b
+```
+
+It looks like an ES6 arrow function, doesn't it?
+
+How about a combinator that takes a function argument?
+
+```
+function(f) { return function(a) { return f(a); }; }
+
+        (f) { return         (a) { return f(a); }; }  // step 1
+        (f) {                (a) {        f(a); }; }  // step 2
+        (f) {                (a) {        f(a)  }  }  // step 3
+        (f) => {             (a) => {     f(a)  }  }  // step 4
+        (f) =>               (a) =>       f(a)        // step 5
+         f  =>                a  =>       f(a)        // step 6
+         f  =>                a  =>         b         // step 7
+      (a => b)  =>            a  =>         b         // step 8
+
+      (a -> b)  ->            a  ->         b
+```
+
+Now here we need to consider what `f` is in order to signify it with an appropriate expression. In this case, it's a function which accepts `a` and returns `b`, as seen in its call: `f(a)`, so we express it just like it was an arrow function: `a => a + 1` or `a -> b`.
+
+So let's work backwards from that:
+
+```
+      (a -> b)  ->            a  ->         b
+
+      (a => b)  =>            a  =>         b         // step 8
+         f  =>                a  =>         b         // step 7
+         f  =>                a  =>       f(a)        // step 6
+        (f) =>               (a) =>       f(a)        // step 5
+        (f) => {             (a) => {     f(a)  }  }  // step 4
+        (f) {                (a) {        f(a)  }  }  // step 3
+        (f) {                (a) {        f(a); }; }  // step 2
+        (f) { return         (a) { return f(a); }; }  // step 1
+
+function(f) { return function(a) { return f(a); }; }
+```
+
+We can read this as "Declare a function which accepts a function with the signature `(a -> b)` and returns a function which accepts `a` and then calls `(a -> b)` with `a` as the argument, returning `b`"
 
 If that's not entirely clear, don't sweat it. I may not be doing a great job explaining. I didn't get clarity on any level in this until I played around with some examples on my own. I would encourage doing the same.
 
