@@ -1,7 +1,8 @@
 ---
-layout: post
+layout: series
 title: 'Fantasy Birds: Introduction'
 description: 'Fantasy Birds: Introduction'
+series: "Fantasy Birds"
 tags: 
   - javascript
   - combinators
