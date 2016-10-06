@@ -180,4 +180,4 @@ This is very much an example of value "in theory." Wouldn't it have just made mo
 
 So what applications does the applicator really have? In short, I don't know. Your opinion is welcome, though: [@amsross](https://twitter.com/amsross).
 
-Next up: **becard**
+Next up: [**becard**]({% post_url 2016-10-06-fantasy-birds-becard %})
