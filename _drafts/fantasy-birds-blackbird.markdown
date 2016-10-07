@@ -7,12 +7,11 @@ tags:
   - javascript
   - combinators
   - functional
-  - haskell
 ---
 
 ## Blackbird
 
-Next up is the [`blackbird`](https://github.com/fantasyland/fantasy-birds#blackbird--c---d---a---b---c---a---b---d) (aka B1 combinator), which is written:
+[`blackbird`](https://github.com/fantasyland/fantasy-birds#blackbird--c---d---a---b---c---a---b---d) (aka B1 combinator), which is written:
 
 ```
 (c -> d) -> (a -> b -> c) -> a -> b -> c -> d
