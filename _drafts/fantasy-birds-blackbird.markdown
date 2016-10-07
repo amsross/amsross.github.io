@@ -8,7 +8,6 @@ tags:
   - combinators
   - functional
   - haskell
-  - lambda
 ---
 
 ## Blackbird
