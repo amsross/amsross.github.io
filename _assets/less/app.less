@@ -6,10 +6,10 @@
 @import "../bower_components/bootstrap/less/forms.less";
 @import "../bower_components/bootstrap/less/buttons.less";
 @import "../bower_components/font-awesome/less/font-awesome.less";
+@import "highlight";
 @import "variables";
 @import "mixins";
 @import "keyframes";
-@import "highlight";
 
 .pull-left {float: left;}
 .pull-right {float: right;}
@@ -164,6 +164,10 @@ article {
 		text-transform: lowercase;
 	}
 	.entry {
+    figure.highlight {
+      margin: 1em 0;
+    }
+    line-height: 133%;
 		a {
 			border-bottom: 1px dotted @color;
 			line-height: 133%;

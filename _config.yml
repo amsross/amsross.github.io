@@ -12,7 +12,7 @@ exclude:
   - Gruntfile.js
   - node_modules
   - vendor
-hightlighter: pygments
+hightlighter: rouge
 keys:
   ga: UA-19230806-1
 name: mattross.io
