@@ -68,7 +68,7 @@ const totalsWeightsByClass = weightsByClass.map(group => {
 
 This looks fine, no? Let's say we need to group the weights across `height` now instead of `infraclass`. Ideally we would want to look at our last step and do a little rejiggering to have it return what we want. Unfortunately, by going down the path outlined above, we've painted ourselves into a corner. If we want to adjust our ending value, we've got to go all the way back to the beginning and change the output of our initial `reduce` to instead group on this new property. That will break all of the assumptions we've made after that, though, won't it? OK, so we'll have to... _duplicate_ it? Please, no.
 
-### Function Composition To The Resuce
+### Function Composition To The Rescue
 
 If, instead of declaring the anonymous function we passed to our intial `reduce` as doing one thing only, we can _compose_ a function out of other, smaller functions, which each perform a step along the way:
 
