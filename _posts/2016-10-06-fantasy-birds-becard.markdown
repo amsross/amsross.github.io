@@ -132,4 +132,4 @@ playerIds = R.pluck("playerId", R.flatten( R.pluck("players", teams)));
 
 But that last version with the function calls nested within one another should be avoided at all costs. Writing code like that is not only uglier, but also harder to understand and harder to refactor later.
 
-Next up: **blackbird**
+Next up: [**blackbird**]({% post_url 2016-10-10-fantasy-birds-blackbird %})
