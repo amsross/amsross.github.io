@@ -8,9 +8,16 @@ author_email: matt@mattross.io
 description: making web stuff
 destination: ./_site
 exclude:
-  - package.json
+  - .dockerignore
+  - CNAME
+  - Dockerfile
   - Gruntfile.js
+  - README.md
+  - bower.json
+  - docker-compose.yml
   - node_modules
+  - package-lock.json
+  - package.json
   - vendor
 hightlighter: rouge
 keys:
@@ -23,4 +30,4 @@ timezone: America/New_York
 url: http://www.mattross.io
 gems:
   - jekyll-sitemap
-  - jeykll-paginate
+  - jekyll-paginate

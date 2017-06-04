@@ -8,7 +8,7 @@
     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "engines": {
-    "node": "0.10.25"
+    "node": "8.0.0"
   },
   "repository": {
     "type": "git",
@@ -22,17 +22,16 @@
   "homepage": "https://github.com/amsross/amsross.github.io",
   "dependencies": {},
   "devDependencies": {
-    "bower": "^1.7.9",
+    "bower": "^1.8.0",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-imagemin": "^1.0.1",
-    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-jst": "^1.0.0",
-    "grunt-contrib-less": "^1.4.0",
-    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-less": "^1.4.1",
+    "grunt-contrib-uglify": "^3.0.1",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-jekyll": "^0.4.4",
     "underscore": "^1.8.3"
   }
 }
