@@ -148,4 +148,4 @@ What if we wanted to find the total of another property besides `weight`?
 
 Instead of the [sum](http://ramdajs.com/docs/#sum), find the [mean](http://ramdajs.com/docs/#mean) `height` of the data across both `infraclass` and `height`.
 
-Next up: **bluebird**
+Next up: [**bluebird**]({% post_url 2017-06-04-fantasy-birds-bluebird %})
