@@ -8,9 +8,7 @@ author_email: matt@mattross.io
 description: making web stuff
 destination: ./_site
 exclude:
-  - .dockerignore
   - CNAME
-  - Dockerfile
   - Gruntfile.js
   - README.md
   - bower.json
