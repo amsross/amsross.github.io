@@ -7,10 +7,6 @@ services:
         - 4000:4000
     volumes:
         - .:/srv/jekyll
-  dev:
-    extends:
-      service: jekyll
-    command: ./node_modules/.bin/grunt dev
 
   build:
     extends:
