@@ -17,7 +17,11 @@ exclude:
   - package-lock.json
   - package.json
   - vendor
-hightlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+highlighter: rouge
 keys:
   ga: UA-19230806-1
 name: mattross.io
@@ -26,6 +30,8 @@ permalink: pretty
 source: .
 timezone: America/New_York
 url: http://www.mattross.io
-gems:
+plugins:
+  - kramdown
+  - rouge
   - jekyll-sitemap
   - jekyll-paginate
