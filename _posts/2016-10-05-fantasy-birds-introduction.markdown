@@ -19,6 +19,8 @@ I poked around the [`fantasyland/fantasy-land`](https://github.com/fantasyland/f
 
 ## Lamda Expressions (&lambda;)
 
+> [Sanctuary has a nice explanation of reading Haskell-like Hindley-Milner type signatures](https://sanctuary.js.org/#types)
+
 At first glance, the "[Ornithology](https://github.com/fantasyland/fantasy-birds#ornithology)" (aka, the docs) looked pretty cryptic to me. That's because they're lambda expressions. I'll admit that until now, I've been only vaguely aware of the fact that a "lambda" is a thing, with no deeper knowledge than that. Maybe touching on what a lambda _actually is_ would help.
 
 [Martin Fowler says](http://martinfowler.com/bliki/Lambda.html): 
