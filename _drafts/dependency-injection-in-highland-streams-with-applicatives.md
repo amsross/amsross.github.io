@@ -18,7 +18,7 @@ We're going to use highland to query the [xkcd](http://xkcd.com) [JSON api](http
 The key idea here is that we don't want to procede with any of our first steps (query the API, write the file, etc) until we're sure we can depend on the availability of our subsequent dependencies (the datastore). To do this we will use functions as our stream values! By encapsulating our logic in an uncalled function, we can defer execution of our logic until the time we decide we are ready. [Highland](https://highlandjs.org) makes this particularly easy because, unlike Promises and the like, it is lazily executed. That means that until a stream is actively consumed, none of the steps along the way will be executed.
 
 For example:
-{% highlight javascript %}
+```javascript
 const h = require('highland')
 h([1, 2, 3, 4])
   .map(console.log)
@@ -28,13 +28,13 @@ h([1, 2, 3, 4])
   .map(console.log)
   .done(() => {})
   // 1, 2, 3, and 4 are all logged!
-{% endhighlight %}
+```
 
 ## Before
 
 Here's some code that is fairly declarative, but is incredibly ripe for a race condition. This is not good code.
 
-{% highlight javascript %}
+```javascript
 const assert = require('assert')
 const h = require('highland')
 const q = require('request')
@@ -68,11 +68,11 @@ h([202, 834, 274, 393])
   .flatMap(writeToDb(db, 'favorites'))  // insert response into the db
   .errors(assert.ifError)               // blow up on an error
   .done(() => process.exit(0))          // clean exit
-{% endhighlight %}
+```
 
 What happens if the code begins executing and get's to `flatMap(writeToDb...` before `MongoClient.connect` has set the `db` variable to a valid connection? Nothing good, that's what. What could we do to avoid this? Well, we could wrap all of our code in the callback from `MongoClient.connect` like so:
 
-{% highlight javascript %}
+```javascript
 // connect to mongo
 MongoClient.connect('mongodb://localhost/xkcd', (err, db) => {
   h([202, 834, 274, 393])
@@ -82,11 +82,11 @@ MongoClient.connect('mongodb://localhost/xkcd', (err, db) => {
     .errors(assert.ifError)
     .done(() => process.exit(0))
   })
-{% endhighlight %}
+```
 
 This code is 1000% safer in the sense that now we can be certain that we have a valid mongo connection to reference with `db`. This solution, however, doesn't scale too well. What happens when we add additional dependencies? Let's say we also need to store this object in redis and then additionally send it off to a Kafka instance somewhere? We'll quickly find ourselves trimming christmas trees:
 
-{% highlight javascript %}
+```javascript
 Kafak.connect(kafkaUrl, (err, kafak) => {
   Redis.connect(redisUrl, (err, redis) => {
       MongoClient.connect('mongodb://localhost/xkcd', (err, db) => {
@@ -101,13 +101,13 @@ Kafak.connect(kafkaUrl, (err, kafak) => {
           })
       })
   })
-{% endhighlight %}
+```
 
 ## After
 
 Let's use streams to add [back-pressure](http://highlandjs.org/#backpressure). This way we can be sure that no initial steps are executed/consumed until any following steps are executed/consumed. In this case we will make our dependencies out consumers. In order to do this, though, we'll need to make sure that any operation that requires these depencies returns a function awaiting that value. Let's tweak the `writeToDb` function a bit. Rather than applying the `db` param first, we will shift that to the last parameter the function expects:
 
-{% highlight javascript %}
+```javascript
 // store an object in a mongo collection
 const writeToDb => collection => json => db => h(push => {
   db.collection(collection).insert(json, (err, data) => {
@@ -116,11 +116,11 @@ const writeToDb => collection => json => db => h(push => {
     push(null, h.nil)
   })
 })
-{% endhighlight %}
+```
 
 Now we can pass it our our `collection` and `json` values as we are ready, but we will instead return a function to be applied later. You can see on **line 9** below that the value being passed to `flatMap` is a function. Rather than operate on it immediately, we will return the stream that comes from `connectToDb`, passing each value (there should only be one) to `writeToDbFn`:
 
-{% highlight javascript linenos %}
+```javascript
 const connectToDb = h.wrapCallback(MongoClient.connect)
 
 h([202, 834, 274, 393])
@@ -133,11 +133,11 @@ h([202, 834, 274, 393])
     .flatMap(db => writeToDbFn(db)))
   .errors(assert.ifError)
   .done(() => process.exit(0))
-{% endhighlight %}
+```
 
 There's still a problem with this approach, though. In this case `connectToDb` is being called each time a value is passed into that `flatMap` on **line 9**. That's 4 connections to the same dabatase, which is much less than ideal. Instead of doing this, we will use highland's [`through`](highlandjs.org/#through) method, which gets executed immediately and only once:
 
-{% highlight javascript %}
+```javascript
 h([202, 834, 274, 393])
   .map(urlFromId)
   .flatMap(getJSON)
@@ -147,22 +147,22 @@ h([202, 834, 274, 393])
       .map(writeToDbFn => writeToDbFn(db))))
   .errors(assert.ifError)
   .done(() => process.exit(0))
-{% endhighlight %}
+```
 
 There, much better. Now we return a stream of functions, each of which we will apply the same `db` to!
 
 For bonus point: Do you know what `x.flatMap.map` is? Why, it's (almost) Applicative's `ap` method! If highland had such a method, we could trade this code:
 
-{% highlight javascript %}
+```javascript
   .through(writeToDbFnStream => connectToDb(myDbUrl)
     .flatMap(db => writeToFbFnStream
       .map(writeToDbFn => writeToDbFn(db))))
-{% endhighlight %}
+```
 
 For something along the lines of this:
 
-{% highlight javascript %}
+```javascript
   .through(connectToDb(myDbUrl).ap)
-{% endhighlight %}
+```
 
 I use this pattern with incredibe frequency in production code. I think I smell a [PR](https://github.com/caolan/highland/pulls)!
