@@ -45,7 +45,7 @@ let db
 const getJSON = url => h.wrapCallback(q.get, (res, body) => body)(url)
   .map(JSON.parse)
 // store an object in a mongo collection
-const writeToDb => (db, collection) => json => h(push => {
+const writeToDb = (db, collection) => json => h(push => {
   db.collection(collection).insert(json, (err, data) => {
     if (err) push(err)
     else push(null, json)
@@ -105,7 +105,7 @@ Kafak.connect(kafkaUrl, (err, kafak) => {
 
 ## After
 
-Let's use streams to add [back-pressure](http://highlandjs.org/#backpressure). This way we can be sure that no initial steps are executed/consumed until any following steps are executed/consumed. In this case we will make our dependencies out consumers. In order to do this, though, we'll need to make sure that any operation that requires these depencies returns a function awaiting that value. Let's tweak the `writeToDb` function a bit. Rather than applying the `db` param first, we will shift that to the last parameter the function expects:
+Let's use streams to add [back-pressure](http://highlandjs.org/#backpressure).  This way we can be sure that no initial steps are executed/consumed until any following steps are executed/consumed. In this case we will make our dependencies our consumers. In order to do this, though, we'll need to make sure that any operation that requires these depencies returns a function awaiting that value. Let's tweak the `writeToDb` function a bit. Rather than applying the `db` param first, we will shift that to the last parameter the function expects: 
 
 ```javascript
 // store an object in a mongo collection
@@ -149,9 +149,9 @@ h([202, 834, 274, 393])
   .done(() => process.exit(0))
 ```
 
-There, much better. Now we return a stream of functions, each of which we will apply the same `db` to!
+There, much better. Now we return a stream of functions, to each of which we will apply the same `db`!
 
-For bonus point: Do you know what `x.flatMap.map` is? Why, it's (almost) Applicative's `ap` method! If highland had such a method, we could trade this code:
+For bonus point: Do you know what `x.flatMap.map` is? Why, it's (almost) [Applicative](https://github.com/fantasyland/fantasy-land#applicative)'s `ap` method! If highland had such a method, we could trade this code:
 
 ```javascript
   .through(writeToDbFnStream => connectToDb(myDbUrl)
@@ -165,4 +165,4 @@ For something along the lines of this:
   .through(connectToDb(myDbUrl).ap)
 ```
 
-I use this pattern with incredibe frequency in production code. I think I smell a [PR](https://github.com/caolan/highland/pulls)!
+I use this pattern with incredibe frequency in production code. I think I smell a PR!
