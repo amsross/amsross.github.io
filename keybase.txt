@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/amsross
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://mattross.io
+  * I am amsross (https://keybase.io/amsross) on keybase.
+  * I have a public key ASC2U3AgCv4lcYmQP2_PoNE1yIvjezql522pvcOw85K7Tgo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120b65370200afe257189903f6fcfa0d135c88be37b3aa5e76da9bdc3b0f392bb4e0a",
+      "host": "keybase.io",
+      "kid": "0120b65370200afe257189903f6fcfa0d135c88be37b3aa5e76da9bdc3b0f392bb4e0a",
+      "uid": "4c7ab61d4c4e1aafb7f3ce3945a64919",
+      "username": "amsross"
+    },
+    "merkle_root": {
+      "ctime": 1553781942,
+      "hash": "33e9cb84a2597da79b1ffd33b9a248d841dde96bafce9fd6a00b8f9c7abc431f4793161a64d32c1b48bbabfd9802c44f4132b59b6ad53a1573f4c521772cdefc",
+      "hash_meta": "ff65fdf4a04b9374ac4da0a2fe936a5f4a7f548a431d8a8b5015e098621d27fd",
+      "seqno": 5046588
+    },
+    "service": {
+      "entropy": "+Y/vy0C0HYunrc219uyWxqhp",
+      "hostname": "mattross.io",
+      "protocol": "http:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "3.1.2"
+  },
+  "ctime": 1553781940,
+  "expire_in": 504576000,
+  "prev": "791e5f0a1996e996ab392933cabb673b0ad5f33ac8aa57f2c8a485e62b12692e",
+  "seqno": 6,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgtlNwIAr+JXGJkD9vz6DRNciL43s6pedtqb3DsPOSu04Kp3BheWxvYWTESpcCBsQgeR5fChmW6ZarOSkzyrtnOwrV8zrIqlfyyKSF5isSaS7EIF6zed2HD36K72WmMMVr4fIs+qnPqxU8si7epa0UAt0gAgHCo3NpZ8RA/JW45ID/mzDrctuA9ButBShyn+UJc7R+o32nbEr9jYBUfQELTJH+6rvMppJXiBjCfTXJdr0JpSV0dxXmopuDCKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIEXN6lBNP6JyYXPmWmgyVqA8YAWuRxB60J61NcKdlBueo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/amsross
+
+==================================================================
