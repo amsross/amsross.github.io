@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "grunt dev",
+    "build": "grunt build",
     "start": "grunt build",
     "postinstall": "bower install"
   },
