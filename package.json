@@ -23,7 +23,7 @@
   "dependencies": {},
   "devDependencies": {
     "bower": "^1.8.0",
-    "grunt": "^1.0.1",
+    "grunt": "^1.0.4",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-imagemin": "^1.0.1",
@@ -31,7 +31,7 @@
     "grunt-contrib-jst": "^1.0.0",
     "grunt-contrib-less": "^1.4.1",
     "grunt-contrib-uglify": "^3.0.1",
-    "grunt-contrib-watch": "^1.0.0",
+    "grunt-contrib-watch": "^1.1.0",
     "underscore": "^1.8.3"
   }
 }
