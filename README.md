@@ -2,17 +2,17 @@
 
 1. Install global dependencies
 	```
-	gem install jekyll && npm install -g bower grunt-cli
+	gem install jekyll
 	```
 
 2. Install project dependencies
 	```
-	npm install # bower assets will be installed automatically
+	npm ci # bower assets will be installed automatically
 	```
 
 3. Fire listeners
 	```
-	screen -S grunt -d -m grunt dev
+	screen -S grunt -d -m npm run dev
 	screen -S jekyll -d -m jekyll serve --watch --drafts
 	```
 

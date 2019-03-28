@@ -1,11 +1,11 @@
 language: node_js
 node_js:
-  - "0.10.25"
+  - "lts/*"
+  - "node"
 before_install:
   - gem install jekyll
-  - npm install -g grunt-cli bower
-install: npm install
-script: grunt build
+install: npm ci
+script: npm run build
 
 # branch whitelist
 branches:
