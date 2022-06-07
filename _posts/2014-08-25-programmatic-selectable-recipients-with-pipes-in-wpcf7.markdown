@@ -11,36 +11,36 @@ description: Programmatic Selectable Recipients With Pipes in WPCF7
 ## Pipes
 
 One feature available in WPCF7 that I use frequently is [selectable recipients with pipes](http://contactform7.com/selectable-recipient-with-pipes/). It allows you to provide a drop-down menu of recipients without exposing their email addresses in your UI. As the documentation states, the standard markup would be:
-{% highlight html %}
+```html
 [select your-recipient "ceo@example.com"
                     "sales@example.com"
                     "support@example.com"]
-{% endhighlight %}
+```
 
 Which outputs (sans wpcf7 classes):
-{% highlight html %}
+```html
 <select>
 	<option value="ceo@example.com">ceo@example.com</option>
 	<option value="sales@example.com">sales@example.com</option>
 	<option value="support@example.com">support@example.com</option>
 </select>
-{% endhighlight %}
+```
 
 With pipes, the syntax changes to this:
-{% highlight html %}
+```html
 [select your-recipient "CEO|ceo@example.com"
                     "Sales|sales@example.com"
                     "Support|support@example.com"]
-{% endhighlight %}
+```
 
 Which outputs (sans wpcf7 classes):
-{% highlight html %}
+```html
 <select>
 	<option value="CEO">CEO</option>
 	<option value="Sales">Sales</option>
 	<option value="Support">Support</option>
 </select>
-{% endhighlight %}
+```
 
 So, by putting a "dummy" value in your select choices, you are protecting potentially sensitive data, in this case email addresses.
 
@@ -53,7 +53,7 @@ The problem with this, though, is that it isn't manipulatable on the back-end. A
 Even though we can't add `WPCF7_Pipe` objects directly to the `WPCF7_Pipes` object, we can get all of the old values and reconstruct the `WPCF7_Pipes` object with the old `WPCF7_Pipe` objects' values and the new values we wish to insert.
 
 Here we get the old values and store them in an array for later:
-{% highlight php %}
+```php
 <?php
 	// get the existing WPCF7_Pipe objects
 	$befores = $tag['pipes']->collect_befores();
@@ -65,24 +65,24 @@ Here we get the old values and store them in an array for later:
 		$pipes_new[] = $befores[$i] . '|' . $afters[$i];
 	}
 ?>
-{% endhighlight %}
+```
 
 Here we add some new `WPCF7_Pipe` object values:
-{% highlight php %}
+```php
 <?php
 	$pipes_new[] = $user->display_name . '|' . $user->user_email;
 ?>
-{% endhighlight %}
+```
 
 Here we constuct a new `WPCF7_Pipes` object and add it to the `$tags` array to return to the form builder:
-{% highlight php %}
+```php
 <?php
 	$tag['pipes'] = new WPCF7_Pipes($pipes_new);
 ?>
-{% endhighlight %}
+```
 
 And here is a complete filter to be placed in `functions.php` which adds existing WordPress users to a dropdown:
-{% highlight php %}
+```php
 <?php
 
 	function dynamic_select_list($tag, $unused) {
@@ -141,13 +141,13 @@ And here is a complete filter to be placed in `functions.php` which adds existin
 	}
 	add_filter('wpcf7_form_tag', 'dynamic_select_list', 10, 2);
 ?>
-{% endhighlight %}
+```
 
 This gives us this new shortcode syntax, which will append the additional supplied data to whatever is retrieved in `dynamic_select_list()`, which is triggered by adding `from_db:users`:
-{% highlight php %}
+```php
 	[select* your-recipient from_db:users "CEO|ceo@example.com"
                     "Sales|sales@example.com"
                     "Support|support@example.com"]
-{% endhighlight %}
+```
 
 The value of `[your-recipient]` will be the email address on the right side of the pipe, but the dummy value can be accessed as `[_raw_your-recipient]` if necessary.

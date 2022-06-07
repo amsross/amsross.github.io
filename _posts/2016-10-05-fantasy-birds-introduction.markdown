@@ -33,10 +33,10 @@ At first glance, the "[Ornithology](https://github.com/fantasyland/fantasy-birds
 
 Since functions are "first-class citizens" in Javascript, lambdas are something we use every day. A very simple way to rationalize this is to think of an anonymous function (lambdas aren't always anonymous, but that's immaterial here), or an arrow function: 
 
-{% highlight javascript %}
+```javascript
 const lengths = [[1],[1,2],[1,2,3]].map(x => x.length);
 // [1, 2, 3]
-{% endhighlight %}
+```
 
 In this instance, `x => x.length` is a lambda. It is the "data" the map function is consuming.
 
@@ -57,7 +57,7 @@ So, how do we read the notation used in `fantasy-birds`? I found a pretty handy 
 
 As an example, we can rewrite a function like this:
 
-{% highlight javascript %}
+```javascript
 function(a) { return a + 1; }
 
         (a) { return a + 1; } // step 1
@@ -69,13 +69,13 @@ function(a) { return a + 1; }
          a  =>       b        // step 7
 
          a  ->       b
-{% endhighlight %}
+```
 
 It looks like an ES6 arrow function, doesn't it?
 
 How about an example that accepts a function as an argument?
 
-{% highlight javascript %}
+```javascript
 function(f) { return function(a) { return f(a); }; }
 
         (f) { return         (a) { return f(a); }; }  // step 1
@@ -88,13 +88,13 @@ function(f) { return function(a) { return f(a); }; }
       (a => b)  =>            a  =>         b         // step 8
 
       (a -> b)  ->            a  ->         b
-{% endhighlight %}
+```
 
 In step 8, we need to consider what `f` is in order to signify it with an appropriate expression. In this case, it's a function which accepts `a` and returns `b`, as seen in its call: `f(a)`, so we express it just like it was an arrow function: `a => a + 1` or `a -> b`.
 
 So let's work backwards from that:
 
-{% highlight javascript %}
+```javascript
       (a -> b)  ->            a  ->         b
 
       (a => b)  =>            a  =>         b         // step 8
@@ -107,7 +107,7 @@ So let's work backwards from that:
         (f) { return         (a) { return f(a); }; }  // step 1
 
 function(f) { return function(a) { return f(a); }; }
-{% endhighlight %}
+```
 
 We can read this as "Declare a function which accepts a function with the signature `(a -> b)` and returns a function which accepts `a` and then calls `(a -> b)` with `a` as the argument, returning `b`"
 
@@ -123,16 +123,16 @@ OK, so what is a combinator?
 
 In Javascript (or any other language, I suppose), a combinator is a function that takes some other functions and combines their functionality. A simple example is [Underscore's `_.compose` method](http://underscorejs.org/#compose), which takes one or more functions as arguments and returns a function which accepts a value and passes it to the first function on the right, whose return value is passed to the next function to the left, etc, until all argument functions have been called. The return value is then the result of all of the passed functions **combined**:
 
-{% highlight javascript %}
+```javascript
 _.compose(three, two, one)(1) === three(two(one(1)))
-{% endhighlight %}
+```
 
 We use these types of constructs all the time without even realizing it. These pop up in my tests constantly:
 
-{% highlight javascript %}
+```javascript
 const allPlayerIds = h.flip(_.pluck)("playerId");
 const uniqPlayerIds = _.compose(_.uniq, allPlayerIds);
-{% endhighlight %}
+```
 
 From here I have two handy functions; one that gives me all of the player ids, and one that gives me all of the unique player ids. Both are still accessible, and there is no duplication between them. They're bite-sized, they're descriptive, they're testable, and they're reusable.
 
@@ -144,14 +144,14 @@ Alright, so what about `fantasyland/fantasy-birds`? My actual intent here is to 
 
 Ok, let's start with an easy one; [applicator](https://github.com/fantasyland/fantasy-birds#applicator--a---b---a---b) (aka A combinator, or apply), which is written as
 
-{% highlight javascript %}
+```javascript
 (a -> b) -> a -> b
 // f => a => f(a)
-{% endhighlight %}
+```
 
 This is possibly the simplest example of a combinator I can think of beyond an `identity` or `idiot` combinator (`a -> a`). This is also one that I use (in theory) pretty frequently. In my usages, the applicator combinator is perfect for the partial application of a function with a single argument, such as pulling a specific property value from each member in a list:
 
-{% highlight javascript %}
+```javascript
 const list = [{
   num: "one",
   title: "cookoo"
@@ -163,7 +163,7 @@ const applicator = f => a => f(a);
 const mapper = applicator(a => a.title);
 
 list.map(mapper); // [ 'cookoo', 'lark' ]
-{% endhighlight %}
+```
 
 Breakdown: `list` is an array of objects, each of which has a `title` property. If we want to get the values of all of the `title` properties in `list`, we:
 
@@ -173,10 +173,10 @@ Breakdown: `list` is an array of objects, each of which has a `title` property. 
 
 What this would look like over time in long form would be something like:
 
-{% highlight javascript %}
+```javascript
 applicator(a => a.title)({num:"one", title: "cookoo"}); // cookoo
 applicator(a => a.title)({num:"two", title: "lark"}); // lark
-{% endhighlight %}
+```
 
 This is very much an example of value "in theory." Wouldn't it have just made more sense to call `list.map(a => a.title)`? I think so. The root of combinators is combinatory logic, and in that system the use of small pieces to make up a more complete whole may lend itself to restricted purpose concepts like the applicator.
 

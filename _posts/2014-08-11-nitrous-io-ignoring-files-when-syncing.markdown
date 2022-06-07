@@ -13,7 +13,7 @@ Thankfully, [Nitrous.io](https://www.nitrous.io/join/ks1xdFYYhts?utm_source=nitr
 According to the [Unison docs](http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html#ignore), you can select specific filenames, paths, or regexs to ignore (along wiht various other options) when determining what to sync. These options need to be put into your `default.prf` file, which is specific to the computer running the desktop application. It is loacated (on my Windows box) at `<home dir>\Nitrous\<box name>\.unison\default.prf`.
 
 Here is my `default.prf`, which is tooled for my workflow on various projects with with grunt, nodeJS, WordPress, and Symfony2:
-{% highlight apacheconf linenos %}
+```apacheconf
 # Unison preferences file
 ignore=Name Thumbs.db
 ignore=Path */.sass-cache
@@ -23,12 +23,12 @@ ignore=Path */phpmyadmin
 ignore=Path */wp-admin
 ignore=Path */wp-content/wp-uploads
 ignore=Path */wp-includes
-{% endhighlight %}
+```
 
 You could also speciy a directory to explicitly sync, such as `.git`, which is ignored by default:
-{% highlight apacheconf linenos %}
+```apacheconf
 # Unison preferences file
 ignorenot=Path */.git
-{% endhighlight %}
+```
 
 More configuration options are available in the [Unison docs](http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html).
